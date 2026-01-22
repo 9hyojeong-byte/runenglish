@@ -16,10 +16,10 @@
         .font-jua {
             font-family: 'Jua', sans-serif;
         }
-        /* Custom animation for the background elements */
+        /* 배경 요소들이 왼쪽에서 오른쪽으로 흐르도록 애니메이션 수정 (캐릭터가 왼쪽으로 달리는 효과) */
         @keyframes scrollBackground {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100vw); }
         }
         .animate-scroll {
             animation: scrollBackground linear infinite;
@@ -41,12 +41,14 @@
 <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client"
   }
 }
 </script>
+<script type="module" src="index.tsx"></script>
 </head>
 <body class="bg-slate-900">
     <div id="root"></div>

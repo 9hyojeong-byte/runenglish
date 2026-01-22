@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { GameStatus, QuizItem } from './types';
-import { QUIZ_DATA, INITIAL_LIVES, INITIAL_SPEED, MAX_QUESTIONS } from './constants';
-import RunnerBackground from './components/RunnerBackground';
-import GameUI from './components/GameUI';
+import { GameStatus, QuizItem } from './types.ts';
+import { QUIZ_DATA, INITIAL_LIVES, INITIAL_SPEED, MAX_QUESTIONS } from './constants.ts';
+import RunnerBackground from './components/RunnerBackground.tsx';
+import GameUI from './components/GameUI.tsx';
 
 const App: React.FC = () => {
   const [status, setStatus] = useState<GameStatus>(GameStatus.START);
