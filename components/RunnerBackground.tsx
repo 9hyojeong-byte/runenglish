@@ -31,9 +31,9 @@ const RunnerBackground: React.FC<Props> = ({ speed }) => {
         </div>
       </div>
 
-      {/* Ground/Road */}
-      <div className="h-1/3 w-full bg-green-500 relative flex flex-col justify-center">
-        {/* Road */}
+      {/* Ground/Road - 위로 이동했을 때를 대비하여 높이를 여유 있게 설정 (h-full) */}
+      <div className="h-full w-full bg-green-500 relative flex flex-col items-center pt-24">
+        {/* Road - 지면의 위쪽 부분에 배치 */}
         <div className="h-24 bg-gray-700 w-full flex items-center justify-around overflow-hidden border-t-4 border-b-4 border-gray-600">
            {/* Lane lines - moving to the right */}
            {[0, 1, 2, 3, 4, 5].map((i) => (
@@ -48,21 +48,21 @@ const RunnerBackground: React.FC<Props> = ({ speed }) => {
            ))}
         </div>
 
-        {/* Scenery (Trees, Flowers) - moving to the right */}
+        {/* Scenery (Trees, Flowers) - Road 바로 위/주변에 배치 */}
         <div 
-          className="absolute -top-12 text-5xl animate-scroll left-[-10%]" 
+          className="absolute top-12 text-5xl animate-scroll left-[-10%]" 
           style={{ animationDuration: `${speed * 0.8}s` }}
         >
           🌲
         </div>
         <div 
-          className="absolute -top-8 left-[-10%] text-4xl animate-scroll" 
+          className="absolute top-14 left-[-10%] text-4xl animate-scroll" 
           style={{ animationDuration: `${speed * 1.2}s`, animationDelay: '-1s' }}
         >
           🌻
         </div>
         <div 
-          className="absolute -top-10 left-[-10%] text-5xl animate-scroll" 
+          className="absolute top-12 left-[-10%] text-5xl animate-scroll" 
           style={{ animationDuration: `${speed}s`, animationDelay: '-0.5s' }}
         >
           🌲

@@ -101,18 +101,20 @@ const App: React.FC = () => {
   const currentQuiz = QUIZ_DATA[currentIndex];
 
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-sky-200 flex flex-col">
-      {/* Background Layer */}
-      <RunnerBackground speed={speed} />
+    <div className="relative h-screen w-full overflow-hidden bg-green-500 flex flex-col">
+      {/* 씬 레이어 (배경 + 캐릭터) - 전체적으로 위로 100px 이동 */}
+      <div className="absolute inset-x-0 h-full pointer-events-none" style={{ transform: 'translateY(-100px)' }}>
+        <RunnerBackground speed={speed} />
 
-      {/* Character Layer */}
-      <div className="absolute inset-x-0 bottom-[15%] flex justify-center items-end pointer-events-none">
-        <div className="animate-character text-7xl transform -translate-y-2 scale-x-[-1]">
-          🏃‍♂️
+        {/* Character Layer - 배경 그룹 내부에 위치하여 함께 이동 */}
+        <div className="absolute inset-x-0 bottom-[15%] flex justify-center items-end">
+          <div className="animate-character text-7xl transform -translate-y-2 scale-x-[-1]">
+            🏃‍♂️
+          </div>
         </div>
       </div>
 
-      {/* Game Content Layer */}
+      {/* UI 레이어 (문제, 점수, 피드백) - 위치 고정 */}
       <GameUI 
         score={score} 
         lives={lives} 
@@ -120,7 +122,7 @@ const App: React.FC = () => {
         feedback={feedback}
       />
 
-      {/* Mobile Control Buttons (A / B) */}
+      {/* 하단 조작 버튼 - 위치 고정 */}
       <div className="mt-auto grid grid-cols-2 gap-4 p-4 pb-8 z-20">
         <button 
           onTouchStart={() => handleAnswer('A')}
@@ -140,7 +142,7 @@ const App: React.FC = () => {
         </button>
       </div>
 
-      {/* Progress Bar */}
+      {/* 진행 바 */}
       <div className="absolute top-0 left-0 w-full h-2 bg-indigo-200">
         <div 
           className="h-full bg-indigo-600 transition-all duration-500"
