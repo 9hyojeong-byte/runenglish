@@ -22,6 +22,10 @@ const App: React.FC = () => {
     setStatus(GameStatus.PLAYING);
   };
 
+  const openExternalLink = () => {
+    window.open('https://koo-vibecoding-gal.vercel.app/', '_blank');
+  };
+
   const handleAnswer = useCallback((choice: 'A' | 'B') => {
     if (status !== GameStatus.PLAYING) return;
 
@@ -62,12 +66,20 @@ const App: React.FC = () => {
           캐릭터와 함께 달리며 <br/>
           올바른 영문법을 선택하세요!
         </p>
-        <button 
-          onClick={startGame}
-          className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold text-2xl py-4 px-12 rounded-full shadow-2xl transition-transform active:scale-95"
-        >
-          게임 시작
-        </button>
+        <div className="flex flex-col gap-4 items-center">
+          <button 
+            onClick={startGame}
+            className="bg-yellow-400 hover:bg-yellow-500 text-indigo-900 font-bold text-2xl py-4 px-12 rounded-full shadow-2xl transition-transform active:scale-95"
+          >
+            게임 시작
+          </button>
+          <button 
+            onClick={openExternalLink}
+            className="text-white/70 hover:text-white text-sm border border-white/30 px-4 py-2 rounded-full transition-all"
+          >
+            다른 앱 더 보기
+          </button>
+        </div>
       </div>
     );
   }
@@ -88,12 +100,20 @@ const App: React.FC = () => {
             {score === MAX_QUESTIONS ? '와우! 문법 천재시군요!' : `${MAX_QUESTIONS}문제 중 ${score}문제를 맞혔습니다.`}
           </p>
         </div>
-        <button 
-          onClick={startGame}
-          className="bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xl py-4 px-10 rounded-2xl shadow-xl transition-all active:scale-95"
-        >
-          다시 도전하기
-        </button>
+        <div className="flex flex-col gap-4 items-center w-full">
+          <button 
+            onClick={startGame}
+            className="w-full max-w-xs bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xl py-4 px-10 rounded-2xl shadow-xl transition-all active:scale-95"
+          >
+            다시 도전하기
+          </button>
+          <button 
+            onClick={openExternalLink}
+            className="text-gray-400 hover:text-white text-sm border border-gray-700 px-4 py-2 rounded-xl transition-all"
+          >
+            다른 앱 더 보기
+          </button>
+        </div>
       </div>
     );
   }
